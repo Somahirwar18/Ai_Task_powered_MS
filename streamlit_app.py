@@ -8,6 +8,7 @@ from nltk.stem.porter import PorterStemmer
 import matplotlib.pyplot as plt
 
 # Download NLTK data if not already present
+# Download NLTK data if not already present
 import nltk
 nltk.download('averaged_perceptron_tagger')
 # Or to download all packages + data + docs:
@@ -58,28 +59,18 @@ if st.button("🎯 Predict"):
         st.subheader("📌 Predicted Outputs:")
         for label, pred in zip(output_labels, preds):
             st.write(f"**{label}:** {pred}")
-            
-            st.subheader("📊 Combined Prediction Summary")
-            labels = [f"{label}: {pred}" for label, pred in zip(output_labels, preds)]
-            sizes = [100 / len(labels)] * len(labels)  # Equal parts for each prediction
-            colors_list = ['skyblue', 'lightgreen', 'salmon', 'violet', 'orange', 'lightcoral']
-            fig, ax = plt.subplots()
-            ax.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors_list[:len(labels)])
-            ax.axis('equal')  # Equal aspect ratio ensures pie is drawn as a circle
-            st.pyplot(fig)
-            st.info("✅ Combined Prediction Pie Chart Complete.")
 
         # Pie charts
-        # st.subheader("📊 Visualizations")
-        # colors_list = ['skyblue', 'lightgreen', 'salmon', 'violet', 'orange', 'lightcoral']
-        # for i, (label, pred) in enumerate(zip(output_labels, preds)):
-            # fig, ax = plt.subplots()
-            # color = colors_list[i % len(colors_list)]
-            # ax.pie([1], labels=[pred], autopct='%1.1f%%', colors=[color])
-            # st.markdown(f"**{label}**")
-            # st.pyplot(fig)
+        st.subheader("📊 Visualizations")
+        colors_list = ['skyblue', 'lightgreen', 'salmon', 'violet', 'orange', 'lightcoral']
+        for i, (label, pred) in enumerate(zip(output_labels, preds)):
+            fig, ax = plt.subplots()
+            color = colors_list[i % len(colors_list)]
+            ax.pie([1], labels=[pred], autopct='%1.1f%%', colors=[color])
+            st.markdown(f"**{label}**")
+            st.pyplot(fig)
 
-        # st.info("✅ Prediction complete. Scroll up to view the results.")
+        st.info("✅ Prediction complete. Scroll up to view the results.")
 
 
 
