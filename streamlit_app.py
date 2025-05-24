@@ -58,7 +58,7 @@ if st.button("🎯 Predict"):
         # Display predictions
         st.subheader("📌 Predicted Outputs:")
         for label, pred in zip(output_labels, preds):
-        st.write(f"**{label}:** {pred}")
+            st.write(f"**{label}:** {pred}")
 
 # Combined Pie Chart
         st.subheader("📊 Combined Prediction Summary")
