@@ -54,23 +54,49 @@ if st.button("🎯 Predict"):
 
         # Predict
         preds = model.predict(vect)[0]
-
+        
         # Display predictions
         st.subheader("📌 Predicted Outputs:")
         for label, pred in zip(output_labels, preds):
-            st.write(f"**{label}:** {pred}")
+        st.write(f"**{label}:** {pred}")
 
-        # Pie charts
-        st.subheader("📊 Visualizations")
+# Combined Pie Chart
+        st.subheader("📊 Combined Prediction Summary")
+
+# Combine label and prediction for pie chart labels
+        combined_labels = [f"{label}: {pred}" for label, pred in zip(output_labels, preds)]
+
+# Each prediction gets equal share (100% divided by number of predictions)
+        percentages = [100 / len(combined_labels)] * len(combined_labels)
+
+# Define colors
         colors_list = ['skyblue', 'lightgreen', 'salmon', 'violet', 'orange', 'lightcoral']
-        for i, (label, pred) in enumerate(zip(output_labels, preds)):
-            fig, ax = plt.subplots()
-            color = colors_list[i % len(colors_list)]
-            ax.pie([1], labels=[pred], autopct='%1.1f%%', colors=[color])
-            st.markdown(f"**{label}**")
-            st.pyplot(fig)
 
-        st.info("✅ Prediction complete. Scroll up to view the results.")
+# Create single pie chart
+        fig, ax = plt.subplots()
+        ax.pie(percentages, labels=combined_labels, autopct='%1.1f%%', colors=colors_list[:len(combined_labels)])
+        ax.axis('equal')  # Ensure pie is a circle
+
+        st.pyplot(fig)
+        st.info("✅ Combined prediction chart displayed successfully.")
+
+
+        # # Display predictions
+        # st.subheader("📌 Predicted Outputs:")
+        # for label, pred in zip(output_labels, preds):
+        #     st.write(f"**{label}:** {pred}")
+
+        # # Pie charts
+        # st.subheader("📊 Visualizations")
+        # colors_list = ['skyblue', 'lightgreen', 'salmon', 'violet', 'orange', 'lightcoral']
+        # for i, (label, pred) in enumerate(zip(output_labels, preds)):
+        #     fig, ax = plt.subplots()
+        #     color = colors_list[i % len(colors_list)]
+        #     ax.pie([1], labels=[pred], autopct='%1.1f%%', colors=[color])
+        #     st.markdown(f"**{label}**")
+        #     st.pyplot(fig)
+
+        # st.info("✅ Prediction complete. Scroll up to view the results.")
 
 
 
