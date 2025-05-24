@@ -8,6 +8,12 @@ from nltk.stem.porter import PorterStemmer
 import matplotlib.pyplot as plt
 
 # Download NLTK data if not already present
+import nltk
+nltk.download('averaged_perceptron_tagger')
+# Or to download all packages + data + docs:
+
+nltk.download('all')
+
 nltk.download('punkt')
 nltk.download('stopwords')
 
