@@ -37,7 +37,7 @@ def preprocess(text):
 # Streamlit UI
 st.set_page_config(page_title="AI-Powered Task Management System", layout="centered")
 st.title("🔮 AI-Powered Task Management System")
-st.markdown("Enter a task or bug summary, and get predictions for multiple labels.")
+st.markdown("Enter a task or bug summary Description, and get predictions for multiple labels.")
 
 summary_input = st.text_area("✍️ Enter Task Summary:")
 
